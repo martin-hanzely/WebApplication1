@@ -1,5 +1,5 @@
 reload_nginx() {  
-  sudo service nginx -s reload  
+  sudo service nginx reload  
 }
 
 zero_downtime_deploy() {  
