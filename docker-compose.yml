@@ -6,3 +6,32 @@ services:
     build:
       context: .
       dockerfile: WebApplication1/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5000:5000"
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 2
+        order: start-first
+        failure_action: rollback
+        delay: 10s
+      rollback_config:
+        parallelism: 2
+        order: start-first
+        failure_action: continue
+        delay: 10s
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    healthcheck:
+        test: [ "CMD", "curl", "-f", "http://localhost:5000 || exit 1" ]
+  
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
