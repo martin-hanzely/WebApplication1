@@ -27,7 +27,7 @@ if (app.Environment.IsDevelopment())
 app.MapGet("/debug", async (IDistributedCache cache) =>
     {
         const string cacheKey = "test";
-        const string appVersion = "V1";
+        const string appVersion = "V2";
         
         var value = await cache.GetStringAsync(cacheKey);
 
