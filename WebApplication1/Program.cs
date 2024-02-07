@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 // Redis
 builder.Services.AddStackExchangeRedisCache(options =>
 {
-    options.Configuration = Environment.GetEnvironmentVariable("REDIS_URL");
+    options.Configuration = "localhost:6379";
     options.InstanceName = "SampleInstance";
 });
 
