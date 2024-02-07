@@ -41,7 +41,7 @@ app.MapGet("/debug", async (IDistributedCache cache) =>
             });
         }
         
-        return $"App Version: {value}, Cache: {cacheKey}";
+        return $"App Version: {appVersion}, Cache: {value}";
     })
     .WithName("Debug")
     .WithOpenApi();
